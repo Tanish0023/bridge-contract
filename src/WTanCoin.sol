@@ -6,7 +6,7 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 
 contract WTanCoin is ERC20, Ownable {
-    constructor() ERC20("WTanCoin","WTC") Ownable(contract.address) {
+    constructor() ERC20("WTanCoin","WTC") Ownable(msg.sender) {
 
     }
     
@@ -14,7 +14,7 @@ contract WTanCoin is ERC20, Ownable {
         _mint(to, amount);
     }
 
-    function burn(address to, uint amount) public {
-        
+    function burn(address from, uint amount) public {
+        _burn(from, amount);
     }
 }
